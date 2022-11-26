@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, user-scalable=yes"
+    />
+    <title>ODA Scholarly HTML</title>
+    <link rel="stylesheet" href="css/scholarly.css" />
+    <script src="js/scholarly.min.js"></script>
+  </head>
+
+  <body prefix="schema: http://schema.org">
+    <header>
+      <div class="banner">
+        <img
+          src="scholarly-html.svg"
+          width="227"
+          height="50"
+          alt="Scholarly HTML logo"
+        />
+        <div class="status">Open Dataset Visualizer (ODA)</div>
+      </div>
+      <h1>Scholarly HTML</h1>
+    </header>
+
+    <div role="contentinfo">
+      <dl>
+        <dt>Authors</dt>
+        <dd>
+          Tzviya Siegman (Wiley) &amp;
+          <a href="http://berjon.com/">Robin Berjon</a>,
+          <a href="https://twitter.com/robinberjon">@robinberjon</a> (
+          <a href="http://science.ai/">science.ai</a>)
+        </dd>
+        <dt>Bugs &amp; Feedback</dt>
+        <dd>
+          <a href="https://github.com/w3c/scholarly-html/issues"
+            >Issues and PRs welcome!</a
+          >
+        </dd>
+        <dt>Discussion Group</dt>
+        <dd>
+          The
+          <a href="https://www.w3.org/community/scholarlyhtml/"
+            >Scholarly HTML Community Group</a
+          >
+          at <a href="https://w3.org/">W3C</a> (
+          <a href="https://lists.w3.org/Archives/Public/public-scholarlyhtml/"
+            >email archives</a
+          >)
+        </dd>
+        <dt>License</dt>
+        <dd>
+          <a href="http://creativecommons.org/licenses/by/4.0/">CC-BY</a>
+        </dd>
+
+        <dt>Content Authors</dt>
+        <dd>
+          Terchea Diana-Gabriela &amp; Mihaila Emilian-Viorel &amp; Patrauceanu
+          Andrei-Ionut
+        </dd>
+      </dl>
+    </div>
+
+    <section typeof="sa:Abstract" id="abstract" role="doc-abstract">
+      <h2>Abstract</h2>
+      <p>
+        This report describes the solution proposed in order to implement ODA, a
+        WADE project. The report provides details regarding the architecture of
+        the application and its structure, the used technologies for the backend
+        and frontend sides and also contains useful diagrams.
+      </p>
+    </section>
+    <section id="introduction" role="doc-introduction">
+      <h2>Introduction</h2>
+      <p>
+        ODA (Open Dataset Visualizer) is a SPA (Single Page Application) able to
+        provide useful visualisations for better understanding of
+        data/information/knowledge uploaded by the end user. The dataset can
+        be uploaded as a file in a specified format. The project consists
+        in multiple services, each with their own functionality: frontend,
+        backend. The features of the app are available to the user through the
+        use of our frontend application, developed with React.
+      </p>
+      <p>TO DO: Frontend and Backend description</p>
+    </section>
+    <section id="structure">
+      <h2>Application Use Cases</h2>
+      <p>
+        In this section we are going to explain our app's main functionalities,
+        along with its nice and useful features.
+      </p>
+      <figure typeof="sa:image">
+        <img
+          src="images/use-case-diagram.png"
+          alt="use-case-diagram"
+          width="100%"
+          height="100%"
+        />
+      </figure>
+      <section id="Root">
+        <h3>Upload dataset</h3>
+        <p>
+          The user wants to generate for a set of data, a view that best fits
+          the data provided. The user has to provide the dataset using the 'File
+          selector' and when ready, press the 'Submit' button. The 'Submit'
+          button will unlock the reset and export functionality.
+        </p>
+      </section>
+      <section id="export-chart">
+        <h3>Export Chart</h3>
+        <p>
+          Allows the users to decide in which format they want to export the
+          view via 'Type' and download the file locally to a preferred
+          directory.
+        </p>
+      </section>
+      <section id="reset-view">
+        <h3>Reset View</h3>
+        <p>Returns the application view to the original state before submission.</p>
+      </section>
+      <section id="reset-view">
+        <h3>Smart filtering</h3>
+        <figure typeof="sa:image">
+          <img
+            src="images/smart-filtering.png"
+            alt="smart-filtering-diagram"
+            width="100%"
+            height="80%"
+          />
+        </figure>
+        <p>
+          Another possible scenario is to filter the data by a
+          variable number of filters (depending on the data provided). Thus, the
+          user will have available a view by default (4), which will be affected
+          by the selection of any available filter (5).
+        </p>
+      </section>
+    </section>
+
+    <section id="architecture">
+      <h2>Architecture</h2>
+      <p>
+        The proposed architecture for our application can be described by the
+        following diagram:
+      </p>
+      <figure typeof="sa:image">
+        <img class="architecture-diagram" src="images/architecture.png" />
+      </figure>
+
+      <section id="input-output">
+        <h3>Input/Output Data Formats</h3>
+        <figure typeof="sa:image">
+          <img
+            src="images/input-output.png"
+            alt="input-output-diagram"
+            width="100%"
+            height="100%"
+          />
+        </figure>
+        <ul>
+          <li>
+            For the first example of a graph presented in the table above we
+            rely on the names of neighbourhoods in the city in question and
+            their specific values. The colours as they become more accentuated
+            will also represent the increased values in the data table. This
+            type of graph is based on a regional representation of values
+            according to the area of interest.
+          </li>
+          <li>
+            The second example of a graph shown in the table above is based on
+            the name of the main country and the relationships between it and
+            the others that are related to it. The lines represent the
+            relationships in the table translated into graphical format.
+          </li>
+          <li>
+            The third example chart is based on two distinctive cases in a
+            column and the values for those values, comparing them in a split
+            bar chart.
+          </li>
+          <li>
+            The 4th example is based on two columns representing an instance and
+            the score given by this instance to the application. Through this
+            format we can structure a pye chart where we can display how many
+            percent each rating was given.
+          </li>
+        </ul>
+      </section>
+    </section>
+
+    <section id="semantics">
+      <h2>Ontology</h2>
+      <p>
+        The ontology will contain named graphs from different specialist areas
+        chosen by us. This depends strictly on which representations will be
+        chosen and on which themes they will be, as the type of graph will have
+        the biggest impact on the domain in which relationships will be made in
+        the ontology. If we take as an example the types of graphs we used in
+        chapter 4.1 we will realize that we will need an ontology that is based
+        on geographic elements (graphs 1 and 2) and on elements of an IT nature
+        that are closely related to mobile applications (graph 4). Of course,
+        once the data has been clearly established, it will be decided which
+        ontology will be used.
+      </p>
+    </section>
+
+    <section id="APIs">
+      <h2>APIs</h2>
+      <section id="upload-api">
+        <h3>Upload API (REST)</h3>
+        <p>We are providing one route :</p>
+        <ul>
+          <li>
+            One which allows a user to upload a file and it will return a JSON
+            object representing the uploaded dataset, the chart type that
+            will be used to visualise the data and meaningful concepts related to our data.
+          </li>
+        </ul>
+      </section>
+      <section id="converter-api">
+        <h3>Converter API (REST)</h3>
+        <p>
+          We will use this API to transform the uploaded data which comes in
+          various formats into a single format supported by the other APIs.
+        </p>
+      </section>
+      <section id="interpret-api">
+        <h3>Interpret Data API (REST)</h3>
+        <p>
+          This API interprets the current dataset and will receive the filtered
+          data from the Filter Data API.
+        </p>
+      </section>
+      <section id="filter-api">
+        <h3>Filter Data API (REST)</h3>
+        This API clears the provided dataset from possible errors and
+        inconsistencies and extracts the most important columns that will be represented in the final chart, and also sends he list of most suitable words for the
+        input data to the Semantic API.
+      </section>
+      <section id="semantic-api">
+        <h3>Semantic API (REST)</h3>
+        <p>
+          This API is a wrapper for SPARQL queries. Based on the keywords present within the dataset columns, keys
+          or roots (depending on the type of file received), the Semantic API
+          uses the SPARQL query service to provide the links between them and
+          the vocabulary existing within the RDF file.
+        </p>
+      </section>
+    </section>
+  </body>
+</html>
