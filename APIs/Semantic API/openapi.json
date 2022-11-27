@@ -1,0 +1,96 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Semantic API",
+    "version": "v1"
+  },
+  "paths": {
+    "/queryservice/{categoryToBeFound}": {
+      "get": {
+        "tags": [
+          "None"
+        ],
+        "summary": "Get the generic category of the word.",
+        "description": "Returns the subject from where the word comes from.",
+        "parameters": [
+          {
+            "name": "categoryToBeFound",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Word of interest",
+            "required": true,
+            "style": "simple",
+            "explode": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": "Spain"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Something went wrong. Verify the database."
+          }
+        }
+      }
+    },
+    "/queryservice/{category}": {
+      "get": {
+        "tags": [
+          "None"
+        ],
+        "summary": "Get the content of an category.",
+        "description": "Returns the subjects of a category.",
+        "parameters": [
+          {
+            "name": "category",
+            "in": "path",
+            "schema": {
+              "type": "string"
+            },
+            "description": "Category",
+            "required": true,
+            "style": "simple",
+            "explode": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": [
+                    "District",
+                    "Gender",
+                    "Neighbourhood",
+                    "Barcelona"
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Something went wrong. Verify the database."
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,117 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Upload API",
+    "version": "v1"
+  },
+  "paths": {
+    "/upload": {
+      "post": {
+        "tags": [
+          "UploadFile"
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "nullable": true
+                  }
+                }
+              },
+              "encoding": {
+                "file": {
+                  "style": "form"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": {
+                    "chartType": "barChart",
+                    "relatedConcepts": [
+                      "District",
+                      "Gender",
+                      "Neighbourhood",
+                      "Barcelona"
+                    ],
+                    "data": [
+                      {
+                        "label": "el Raval",
+                        "type": "Boys",
+                        "value": 283
+                      },
+                      {
+                        "label": "el Raval",
+                        "type": "Girls",
+                        "value": 219
+                      },
+                      {
+                        "label": "el Barri Gòtic",
+                        "type": "Boys",
+                        "value": 56
+                      },
+                      {
+                        "label": "el Barri Gòtic",
+                        "type": "Girls",
+                        "value": 53
+                      },
+                      {
+                        "label": "la Barceloneta",
+                        "type": "Boys",
+                        "value": 51
+                      },
+                      {
+                        "label": "la Barceloneta",
+                        "type": "Girls",
+                        "value": 50
+                      },
+                      {
+                        "label": "Sant Pere, Santa Caterina i la Ribera",
+                        "type": "Boys",
+                        "value": 90
+                      },
+                      {
+                        "label": "Sant Pere, Santa Caterina i la Ribera",
+                        "type": "Girls",
+                        "value": 90
+                      },
+                      {
+                        "label": "el Fort Pienc",
+                        "type": "Boys",
+                        "value": 117
+                      },
+                      {
+                        "label": "el Fort Pienc",
+                        "type": "Girls",
+                        "value": 114
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Something went wrong. Verify the database."
+          }
+        }
+      }
+    }
+  },
+  "components": {}
+}

@@ -1,0 +1,218 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Interpret Data API",
+    "version": "v1"
+  },
+  "paths": {
+    "/interpret": {
+      "post": {
+        "tags": [
+          "InterpretFile"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "example": [
+                {
+                  "Year": 2017,
+                  "District Code": 1,
+                  "District Name": "Ciutat Vella",
+                  "Neighborhood Code": 1,
+                  "Neighborhood Name": "el Raval",
+                  "Gender": "Boys",
+                  "Number": 283
+                },
+                {
+                  "Year": 2017,
+                  "District Code": 1,
+                  "District Name": "Ciutat Vella",
+                  "Neighborhood Code": 2,
+                  "Neighborhood Name": "el Barri Gòtic",
+                  "Gender": "Boys",
+                  "Number": 56
+                },
+                {
+                  "Year": 2017,
+                  "District Code": 1,
+                  "District Name": "Ciutat Vella",
+                  "Neighborhood Code": 3,
+                  "Neighborhood Name": "la Barceloneta",
+                  "Gender": "Boys",
+                  "Number": 51
+                },
+                {
+                  "Year": 2017,
+                  "District Code": 1,
+                  "District Name": "Ciutat Vella",
+                  "Neighborhood Code": 4,
+                  "Neighborhood Name": "Sant Pere, Santa Caterina i la Ribera",
+                  "Gender": "Boys",
+                  "Number": 90
+                },
+                {
+                  "Year": 2017,
+                  "District Code": 2,
+                  "District Name": "Eixample",
+                  "Neighborhood Code": 5,
+                  "Neighborhood Name": "el Fort Pienc",
+                  "Gender": "Boys",
+                  "Number": 117
+                },
+                {
+                  "Year": 2017,
+                  "District Code": 2,
+                  "District Name": "Eixample",
+                  "Neighborhood Code": 6,
+                  "Neighborhood Name": "la Sagrada Família",
+                  "Gender": "Boys",
+                  "Number": 207
+                },
+                {
+                  "Year": 2017,
+                  "District Code": 2,
+                  "District Name": "Eixample",
+                  "Neighborhood Code": 7,
+                  "Neighborhood Name": "la Dreta de l'Eixample",
+                  "Gender": "Boys",
+                  "Number": 185
+                },
+                {
+                  "Year": 2017,
+                  "District Code": 2,
+                  "District Name": "Eixample",
+                  "Neighborhood Code": 8,
+                  "Neighborhood Name": "l'Antiga Esquerra de l'Eixample",
+                  "Gender": "Boys",
+                  "Number": 176
+                },
+                {
+                  "Year": 2017,
+                  "District Code": 2,
+                  "District Name": "Eixample",
+                  "Neighborhood Code": 9,
+                  "Neighborhood Name": "la Nova Esquerra de l'Eixample",
+                  "Gender": "Boys",
+                  "Number": 218
+                },
+                {
+                  "Year": 2017,
+                  "District Code": 2,
+                  "District Name": "Eixample",
+                  "Neighborhood Code": 10,
+                  "Neighborhood Name": "Sant Antoni",
+                  "Gender": "Boys",
+                  "Number": 172
+                },
+                {
+                  "Year": 2017,
+                  "District Code": 3,
+                  "District Name": "Sants-Montjuïc",
+                  "Neighborhood Code": 11,
+                  "Neighborhood Name": "el Poble Sec",
+                  "Gender": "Boys",
+                  "Number": 156
+                },
+                {
+                  "Year": 2017,
+                  "District Code": 3,
+                  "District Name": "Sants-Montjuïc",
+                  "Neighborhood Code": 12,
+                  "Neighborhood Name": "la Marina del Prat Vermell",
+                  "Gender": "Boys",
+                  "Number": 4
+                }
+              ]
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "example": {
+                    "chartType": "barChart",
+                    "relatedConcepts": [
+                      "District",
+                      "Gender",
+                      "Neighborhood",
+                      "Barcelona"
+                    ],
+                    "data": [
+                      {
+                        "label": "el Raval",
+                        "type": "Boys",
+                        "value": 283
+                      },
+                      {
+                        "label": "el Raval",
+                        "type": "Girls",
+                        "value": 219
+                      },
+                      {
+                        "label": "el Barri Gòtic",
+                        "type": "Boys",
+                        "value": 56
+                      },
+                      {
+                        "label": "el Barri Gòtic",
+                        "type": "Girls",
+                        "value": 53
+                      },
+                      {
+                        "label": "la Barceloneta",
+                        "type": "Boys",
+                        "value": 51
+                      },
+                      {
+                        "label": "la Barceloneta",
+                        "type": "Girls",
+                        "value": 50
+                      },
+                      {
+                        "label": "Sant Pere, Santa Caterina i la Ribera",
+                        "type": "Boys",
+                        "value": 90
+                      },
+                      {
+                        "label": "Sant Pere, Santa Caterina i la Ribera",
+                        "type": "Girls",
+                        "value": 90
+                      },
+                      {
+                        "label": "el Fort Pienc",
+                        "type": "Boys",
+                        "value": 117
+                      },
+                      {
+                        "label": "el Fort Pienc",
+                        "type": "Girls",
+                        "value": 114
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Something went wrong. Verify the database."
+          }
+        }
+      }
+    }
+  },
+  "components": {}
+}
