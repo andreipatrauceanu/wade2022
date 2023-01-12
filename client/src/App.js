@@ -1,7 +1,18 @@
 import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Main from "./pages/Main";
+import Home from "./pages/Home";
 
 function App() {
-  return <div>WADE 2022 - ODA - Open Dataset Visualizer</div>;
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="main" element={<Main />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
